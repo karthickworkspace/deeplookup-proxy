@@ -21,7 +21,7 @@ export default async function handler(req, res) {
   global.rateMap.set(ip, recent);
 
   // Secret key from Vercel env vars
-  const KEY = process.env.DEEPSEEK_KEY;
+  const KEY = (process.env.DEEPSEEK_KEY || "").trim();
   if (!KEY) {
     return res.status(500).json({ error: 'Server misconfig: no API key' });
   }
